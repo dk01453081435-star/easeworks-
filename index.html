@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EaseWorks — Modern Software Development & Engineering Agency</title>
+  <meta name="description" content="EaseWorks builds professional websites, mobile apps, and digital solutions at an affordable cost with a dedicated, flexible team of engineers.">
+  <meta name="keywords" content="EaseWorks, Software Agency, Web Development, Mobile Apps, Full-Stack, UI UX Design, AI Integration, Affordable Development">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="EaseWorks — We Build Digital Solutions. You Focus on Your Business.">
+  <meta property="og:description" content="Professional Websites & Apps Without the High Agency Cost. Built by an agile engineering team.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M9 10h14M9 16h9M9 22h14' stroke='%23ffffff' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Custom Cursor Elements (Desktop only) -->
+  <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+  <div class="cursor-trailer" id="cursorTrailer" aria-hidden="true"></div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Sticky Header / Navbar -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner container">
+      <a href="#hero" class="brand-logo" aria-label="EaseWorks Home">
+        <span class="logo-symbol">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </span>
+        <span class="logo-text">Ease<span class="logo-accent">Works</span></span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#process" class="nav-link">Process</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#contact" class="btn btn-primary btn-nav-cta">
+          <span>Get a Quote</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-inner container">
+      <ul class="mobile-nav-links">
+        <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+        <li><a href="#services" class="mobile-nav-link">Services</a></li>
+        <li><a href="#about" class="mobile-nav-link">About</a></li>
+        <li><a href="#process" class="mobile-nav-link">Process</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+      <div class="drawer-footer">
+        <a href="#contact" class="btn btn-primary btn-block mobile-drawer-btn">
+          <span>Get a Quote</span>
+          <span>→</span>
+        </a>
+        <div class="drawer-contact-info">
+          <a href="https://wa.me/918084444842?text=Hi%20EaseWorks%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">
+            📱 +91 80844 44842 (WhatsApp)
+          </a>
+          <a href="mailto:k4390249@gmail.com">
+            📧 k4390249@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-ambient-glow" aria-hidden="true"></div>
+      
+      <div class="container hero-container">
+        <div class="hero-content reveal-item">
+          <!-- Small Label -->
+          <div class="badge-pill">
+            <span class="badge-dot"></span>
+            <span class="badge-text">ENGINEERING • DESIGN • TECHNOLOGY</span>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="hero-heading">
+            We Build Digital Solutions That Make Work <span class="highlight-text">Easier.</span>
+          </h1>
+
+          <!-- Supporting Text -->
+          <p class="hero-subtitle">
+            EaseWorks helps businesses, startups, creators, and individuals build professional websites, mobile apps, and digital products at an affordable cost.
+          </p>
+
+          <!-- Buttons -->
+          <div class="hero-cta-group">
+            <a href="#contact" class="btn btn-primary hero-btn">
+              <span>Get a Quote</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#services" class="btn btn-secondary hero-btn">
+              <span>Explore Services</span>
+              <span class="btn-arrow" aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <!-- Metric highlights -->
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <span class="highlight-dot"></span>
+              <span><strong>10+</strong> Team Members</span>
+            </div>
+            <span class="highlight-separator">•</span>
+            <div class="highlight-item">
+              <span class="highlight-dot"></span>
+              <span><strong>7</strong> Core Services</span>
+            </div>
+            <span class="highlight-separator">•</span>
+            <div class="highlight-item">
+              <span class="highlight-dot"></span>
+              <span>Affordable Development</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modern Abstract Technology Visual (Desktop Parallax) -->
+        <div class="hero-visual" id="heroVisual">
+          <div class="visual-canvas" id="parallaxCanvas">
+            <!-- Ambient Card Backing & Grid -->
+            <div class="tech-grid-plate" aria-hidden="true"></div>
+            
+            <!-- Code Terminal Mockup Card -->
+            <div class="tech-card code-window" data-parallax-depth="20">
+              <div class="code-window-bar">
+                <div class="window-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-amber"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="window-tab">EaseWorksEngine.ts</div>
+                <div class="window-actions">
+                  <span class="badge-status">Build: Passing</span>
+                </div>
+              </div>
+              <div class="code-content">
+                <div class="code-line"><span class="c-keyword">import</span> { <span class="c-variable">createDigitalSolution</span> } <span class="c-keyword">from</span> <span class="c-string">'@easeworks/core'</span>;</div>
+                <div class="code-line">&nbsp;</div>
+                <div class="code-line"><span class="c-comment">// Engineering practical products</span></div>
+                <div class="code-line"><span class="c-keyword">export const</span> <span class="c-func">deployClientProject</span> = <span class="c-keyword">async</span> () => {</div>
+                <div class="code-line">&nbsp;&nbsp;<span class="c-keyword">const</span> solution = <span class="c-keyword">await</span> <span class="c-func">createDigitalSolution</span>({</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;architecture: <span class="c-string">'Clean & Scalable'</span>,</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;costModel: <span class="c-string">'Accessible & Fair'</span>,</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;team: <span class="c-string">'10+ Dedicated Engineers'</span>,</div>
+                <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;qualityCheck: <span class="c-bool">true</span></div>
+                <div class="code-line">&nbsp;&nbsp;});</div>
+                <div class="code-line">&nbsp;&nbsp;<span class="c-keyword">return</span> solution.<span class="c-func">launch</span>();</div>
+                <div class="code-line">};</div>
+              </div>
+            </div>
+
+            <!-- Floating Sub-Card 1: Status & Uptime -->
+            <div class="floating-badge badge-top-right" data-parallax-depth="-30">
+              <div class="badge-icon-wrap icon-green">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <span class="badge-title">Production Ready</span>
+                <span class="badge-sub">99.9% Uptime SLA</span>
+              </div>
+            </div>
+
+            <!-- Floating Sub-Card 2: Tech Stack / API -->
+            <div class="floating-badge badge-bottom-left" data-parallax-depth="35">
+              <div class="badge-icon-wrap icon-blue">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <span class="badge-title">Modern Stack</span>
+                <span class="badge-sub">React • Node • Cloud • AI</span>
+              </div>
+            </div>
+
+            <!-- Floating Sub-Card 3: Speed / Efficiency -->
+            <div class="floating-badge badge-bottom-right" data-parallax-depth="-15">
+              <div class="badge-icon-wrap icon-purple">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <span class="badge-title">Optimized Speed</span>
+                <span class="badge-sub">Fast & Lightweight</span>
+              </div>
+            </div>
+
+            <!-- Abstract Graphic Dots / Glow -->
+            <div class="abstract-halo" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section section-padding" id="services">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center reveal-item">
+          <div class="section-label">WHAT WE DO</div>
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-subtitle">
+            From websites to AI-powered applications, we build practical digital solutions for modern businesses.
+          </p>
+        </div>
+
+        <!-- 7 Services Grid with Peer-Hover Dimming -->
+        <div class="services-grid" id="servicesGrid">
+          <!-- 01 Website Development -->
+          <article class="service-card reveal-item" data-index="1">
+            <div class="service-card-glow"></div>
+            <div class="service-top">
+              <span class="service-num">01</span>
+              <div class="service-icon-box">
+                <span class="emoji-icon" aria-hidden="true">🌐</span>
+              </div>
+            </div>
+            <h3 class="service-title">Website Development</h3>
+            <p class="service-desc">
+              Professional, responsive, and modern websites for businesses, startups, creators, and individuals.
+            </p>
+            <div class="service-footer">
+              <span class="service-action-text">Discuss Project</span>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </article>
+
+          <!-- 02 Mobile App Development -->
+          <article class="service-card reveal-item" data-index="2">
+            <div class="service-card-glow"></div>
+            <div class="service-top">
+              <span class="service-num">02</span>
+              <div class="service-icon-box">
+                <span class="emoji-icon" aria-hidden="true">📱</span>
+              </div>
+            </div>
+            <h3 class="service-title">Mobile App Development</h3>
+            <p class="service-desc">
+              Modern mobile applications designed for Android and iOS with a smooth user experience.
+            </p>
+            <div class="service-footer">
+              <span class="service-action-text">Discuss Project</span>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </article>
+
+          <!-- 03 Full-Stack Development -->
+          <article class="service-card reveal-item" data-index="3">
+            <div class="service-card-glow"></div>
+            <div class="service-top">
+              <span class="service-num">03</span>
+              <div class="service-icon-box">
+                <span class="emoji-icon" aria-hidden="true">💻</span>
+              </div>
+            </div>
+            <h3 class="service-title">Full-Stack Development</h3>
+            <p class="service-desc">
+              Complete frontend and backend development for modern and scalable web applications.
+            </p>
+            <div class="service-footer">
+              <span class="service-action-text">Discuss Project</span>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </article>
+
+          <!-- 04 UI/UX Design -->
+          <article class="service-card reveal-item" data-index="4">
+            <div class="service-card-glow"></div>
+            <div class="service-top">
+              <span class="service-num">04</span>
+              <div class="service-icon-box">
+                <span class="emoji-icon" aria-hidden="true">🎨</span>
+              </div>
+            </div>
+            <h3 class="service-title">UI/UX Design</h3>
+            <p class="service-desc">
+              Clean, intuitive, and user-friendly interfaces designed around real users and business goals.
+            </p>
+            <div class="service-footer">
+              <span class="service-action-text">Discuss Project</span>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </article>
+
+          <!-- 05 Backend Development -->
+          <article class="service-card reveal-item" data-index="5">
+            <div class="service-card-glow"></div>
+            <div class="service-top">
+              <span class="service-num">05</span>
+              <div class="service-icon-box">
+                <span class="emoji-icon" aria-hidden="true">⚙️</span>
+              </div>
+            </div>
+            <h3 class="service-title">Backend Development</h3>
+            <p class="service-desc">
+              Reliable backend systems, APIs, databases, authentication, and server-side development.
+            </p>
+            <div class="service-footer">
+              <span class="service-action-text">Discuss Project</span>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </article>
+
+          <!-- 06 AI Integration -->
+          <article class="service-card reveal-item" data-index="6">
+            <div class="service-card-glow"></div>
+            <div class="service-top">
+              <span class="service-num">06</span>
+              <div class="service-icon-box">
+                <span class="emoji-icon" aria-hidden="true">🤖</span>
+              </div>
+            </div>
+            <h3 class="service-title">AI Integration</h3>
+            <p class="service-desc">
+              Integrate AI-powered features, automation, and intelligent functionality into websites and applications.
+            </p>
+            <div class="service-footer">
+              <span class="service-action-text">Discuss Project</span>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </article>
+
+          <!-- 07 Business & E-commerce Websites -->
+          <article class="service-card service-card-wide reveal-item" data-index="7">
+            <div class="service-card-glow"></div>
+            <div class="service-top">
+              <span class="service-num">07</span>
+              <div class="service-icon-box">
+                <span class="emoji-icon" aria-hidden="true">🛒</span>
+              </div>
+            </div>
+            <h3 class="service-title">Business & E-commerce Websites</h3>
+            <p class="service-desc">
+              Professional business websites and online stores designed for businesses that want to grow online.
+            </p>
+            <div class="service-footer">
+              <span class="service-action-text">Discuss Project</span>
+              <span class="service-arrow" aria-hidden="true">→</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY EASEWORKS SECTION -->
+    <section class="why-section section-padding" id="about">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <div class="section-label">WHY EASEWORKS</div>
+          <h2 class="section-title">Professional Development Without the Heavy Agency Cost.</h2>
+          <p class="section-subtitle section-subtitle-lg">
+            We keep our development process flexible by working with a team of engineers and developers at different experience levels. This allows us to build quality digital products while keeping our services accessible to startups, small businesses, and individuals.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <!-- Card 1 -->
+          <div class="why-card reveal-item">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                <path d="M12 18V6"></path>
+              </svg>
+            </div>
+            <h3 class="why-card-title">Affordable</h3>
+            <p class="why-card-desc">Professional development without unnecessary agency overhead.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="why-card reveal-item">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="why-card-title">Engineering Team</h3>
+            <p class="why-card-desc">A team with different technical skills and development experience.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="why-card reveal-item">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <h3 class="why-card-title">Flexible</h3>
+            <p class="why-card-desc">Build a team according to the requirements of your project.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="why-card reveal-item">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+            <h3 class="why-card-title">Real Experience</h3>
+            <p class="why-card-desc">Young developers get opportunities to work on real-world projects.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team-section section-padding" id="team">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <div class="section-label">OUR TEAM</div>
+          <h2 class="section-title">Built by Engineers.</h2>
+          <p class="section-subtitle section-subtitle-lg">
+            EaseWorks brings together a team of around 10 developers and engineers working across different technical areas. From junior developers to senior engineers, we bring the right skills together for each project.
+          </p>
+        </div>
+
+        <!-- 6 Disciplines / Role Cards -->
+        <div class="team-grid">
+          <!-- Role 1 -->
+          <div class="team-card reveal-item">
+            <div class="role-avatar-wrapper">
+              <div class="role-avatar-bg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+            </div>
+            <h3 class="role-title">Full-Stack Developer</h3>
+            <p class="role-meta">Architecture • Web Systems • End-to-End Delivery</p>
+            <div class="role-tags">
+              <span>TypeScript</span>
+              <span>Next.js</span>
+              <span>Node</span>
+            </div>
+          </div>
+
+          <!-- Role 2 -->
+          <div class="team-card reveal-item">
+            <div class="role-avatar-wrapper">
+              <div class="role-avatar-bg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+            </div>
+            <h3 class="role-title">Frontend Developer</h3>
+            <p class="role-meta">Responsive UI • Performance • Component Systems</p>
+            <div class="role-tags">
+              <span>React</span>
+              <span>Tailwind</span>
+              <span>Micro-interactions</span>
+            </div>
+          </div>
+
+          <!-- Role 3 -->
+          <div class="team-card reveal-item">
+            <div class="role-avatar-wrapper">
+              <div class="role-avatar-bg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="role-title">Backend Developer</h3>
+            <p class="role-meta">APIs • Database Design • Secure Auth & Cloud</p>
+            <div class="role-tags">
+              <span>PostgreSQL</span>
+              <span>REST / GraphQL</span>
+              <span>Docker</span>
+            </div>
+          </div>
+
+          <!-- Role 4 -->
+          <div class="team-card reveal-item">
+            <div class="role-avatar-wrapper">
+              <div class="role-avatar-bg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                  <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+              </div>
+            </div>
+            <h3 class="role-title">Mobile App Developer</h3>
+            <p class="role-meta">Cross-Platform • iOS & Android • Native Feel</p>
+            <div class="role-tags">
+              <span>Flutter</span>
+              <span>React Native</span>
+              <span>App Store Prep</span>
+            </div>
+          </div>
+
+          <!-- Role 5 -->
+          <div class="team-card reveal-item">
+            <div class="role-avatar-wrapper">
+              <div class="role-avatar-bg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                  <path d="M2 2l7.586 7.586"></path>
+                  <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+              </div>
+            </div>
+            <h3 class="role-title">UI/UX Designer</h3>
+            <p class="role-meta">Design Systems • Wireframing • User Journeys</p>
+            <div class="role-tags">
+              <span>Figma</span>
+              <span>Prototyping</span>
+              <span>Accessibility</span>
+            </div>
+          </div>
+
+          <!-- Role 6 -->
+          <div class="team-card reveal-item">
+            <div class="role-avatar-wrapper">
+              <div class="role-avatar-bg">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a10 10 0 0 1 10 10c0 4.42-2.87 8.17-6.84 9.5-.5.09-.68-.22-.68-.48v-1.7c0-.58-.2-1-.46-1.22 2.56-.28 5.25-1.28 5.25-5.7 0-1.26-.45-2.29-1.19-3.09.12-.29.52-1.46-.11-3.05 0 0-.97-.31-3.18 1.18a11.08 11.08 0 0 0-5.78 0C7.02 6.57 6.05 6.88 6.05 6.88c-.63 1.59-.23 2.76-.11 3.05-.74.8-1.19 1.83-1.19 3.09 0 4.41 2.68 5.42 5.24 5.71-.19.16-.36.46-.42.9-.38.17-1.35.47-1.95-.56 0 0-.35-.64-1.02-.69 0 0-.65-.01-.05.41 0 0 .44.2.73.99.17.47.74 1.38 2.29.95v1.27c0 .26-.18.57-.69.48A10.01 10.01 0 0 1 2 12 10 10 0 0 1 12 2z"></path>
+                </svg>
+              </div>
+            </div>
+            <h3 class="role-title">AI Developer</h3>
+            <p class="role-meta">LLM Workflows • Automation • Smart Embeddings</p>
+            <div class="role-tags">
+              <span>OpenAI API</span>
+              <span>Python</span>
+              <span>LangChain</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="process-section section-padding" id="process">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <div class="section-label">OUR PROCESS</div>
+          <h2 class="section-title">From Idea to Launch.</h2>
+          <p class="section-subtitle">
+            A structured, collaborative development timeline designed to deliver practical results without friction.
+          </p>
+        </div>
+
+        <div class="process-timeline">
+          <div class="timeline-track" aria-hidden="true"></div>
+
+          <!-- Step 1 -->
+          <div class="timeline-step reveal-item">
+            <div class="step-marker">
+              <span class="marker-dot"></span>
+              <span class="step-number">01</span>
+            </div>
+            <div class="step-card">
+              <span class="step-label">Phase 01</span>
+              <h3 class="step-title">Discuss</h3>
+              <p class="step-desc">Tell us about your idea, requirements, and goals. We listen carefully to define the project scope and align on priorities.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-step reveal-item">
+            <div class="step-marker">
+              <span class="marker-dot"></span>
+              <span class="step-number">02</span>
+            </div>
+            <div class="step-card">
+              <span class="step-label">Phase 02</span>
+              <h3 class="step-title">Plan</h3>
+              <p class="step-desc">We choose the right technology, design, and development approach. You receive a clear architectural roadmap and timeline.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-step reveal-item">
+            <div class="step-marker">
+              <span class="marker-dot"></span>
+              <span class="step-number">03</span>
+            </div>
+            <div class="step-card">
+              <span class="step-label">Phase 03</span>
+              <h3 class="step-title">Build</h3>
+              <p class="step-desc">Our team develops and tests your website or application with agile sprint iterations, regular updates, and strict QA standards.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-step reveal-item">
+            <div class="step-marker">
+              <span class="marker-dot"></span>
+              <span class="step-number">04</span>
+            </div>
+            <div class="step-card">
+              <span class="step-label">Phase 04</span>
+              <h3 class="step-title">Launch</h3>
+              <p class="step-desc">We deliver the final product and help you get it ready for users, complete with deployment setup, domain wiring, and handover support.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AFFORDABLE DEVELOPMENT SECTION (COMPARISON) -->
+    <section class="affordable-section section-padding">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <h2 class="section-title">Quality Development. Smarter Costs.</h2>
+          <p class="section-subtitle section-subtitle-lg">
+            Our flexible engineering team allows us to keep our development costs lower than traditional agencies. We combine experienced developers with talented young engineers to build projects efficiently while giving new developers valuable real-world experience.
+          </p>
+        </div>
+
+        <div class="comparison-container reveal-item">
+          <!-- Traditional Agency Box -->
+          <div class="comparison-card traditional-card">
+            <div class="comparison-badge badge-traditional">Traditional Agency</div>
+            <h3 class="comparison-header">Heavy Agency Structure</h3>
+            <ul class="comparison-list">
+              <li>
+                <span class="comp-icon red">✕</span>
+                <div>
+                  <strong>High overhead</strong>
+                  <p>Expensive office footprints, account managers, and executive markups.</p>
+                </div>
+              </li>
+              <li>
+                <span class="comp-icon red">✕</span>
+                <div>
+                  <strong>Large fixed teams</strong>
+                  <p>Rigid staffing constraints with billable hours tied to corporate tiers.</p>
+                </div>
+              </li>
+              <li>
+                <span class="comp-icon red">✕</span>
+                <div>
+                  <strong>Higher development cost</strong>
+                  <p>Pricing inflated to cover heavy overhead costs rather than actual engineering.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- VS Divider Pill -->
+          <div class="comparison-vs" aria-hidden="true">VS</div>
+
+          <!-- EaseWorks Box -->
+          <div class="comparison-card easeworks-card">
+            <div class="comparison-badge badge-easeworks">EaseWorks Advantage</div>
+            <h3 class="comparison-header">Agile Engineering Model</h3>
+            <ul class="comparison-list">
+              <li>
+                <span class="comp-icon green">✓</span>
+                <div>
+                  <strong>Flexible team</strong>
+                  <p>Right-sized talent adapted precisely to your specific project needs.</p>
+                </div>
+              </li>
+              <li>
+                <span class="comp-icon green">✓</span>
+                <div>
+                  <strong>Efficient development</strong>
+                  <p>Direct communication with developers, rapid prototyping, and focused sprints.</p>
+                </div>
+              </li>
+              <li>
+                <span class="comp-icon green">✓</span>
+                <div>
+                  <strong>Affordable pricing</strong>
+                  <p>Fair, accessible pricing without sacrificing technical quality or security.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LARGE DARK CTA SECTION -->
+    <section class="cta-section">
+      <div class="cta-inner container">
+        <div class="cta-mesh-glow" aria-hidden="true"></div>
+        <div class="cta-content text-center reveal-item">
+          <div class="badge-pill badge-dark">
+            <span class="badge-dot badge-dot-cyan"></span>
+            <span>LET'S TALK SOLUTIONS</span>
+          </div>
+          <h2 class="cta-heading">Have an Idea? Let's Build It.</h2>
+          <p class="cta-desc">
+            Tell us what you want to build. We'll understand your requirements and discuss the right development approach for your project.
+          </p>
+          <div class="cta-btn-group">
+            <a href="#contact" class="btn btn-primary btn-cta-main">
+              <span>Start a Project</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="https://wa.me/918084444842?text=Hi%20EaseWorks%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-cta">
+              <span class="btn-icon">💬</span>
+              <span>Chat on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section section-padding" id="contact">
+      <div class="container">
+        <div class="section-header text-center reveal-item">
+          <div class="section-label">CONTACT</div>
+          <h2 class="section-title">Let's Work Together.</h2>
+          <p class="section-subtitle">
+            Have a website, app, or digital product idea? Send us the details and our team will get back to you.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Left: Direct Contact Cards -->
+          <div class="direct-contact-col reveal-item">
+            <h3 class="direct-contact-heading">Reach Us Directly</h3>
+            <p class="direct-contact-desc">
+              Prefer an immediate conversation? Reach out directly via WhatsApp or Email. We usually reply within a few hours.
+            </p>
+
+            <div class="direct-cards-wrapper">
+              <!-- WhatsApp Card -->
+              <div class="direct-card whatsapp-card">
+                <div class="direct-card-glow"></div>
+                <div class="direct-card-header">
+                  <div class="direct-icon-wrap whatsapp-icon-bg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="direct-label">WhatsApp</span>
+                    <div class="direct-value">+91 80844 44842</div>
+                  </div>
+                </div>
+                <p class="direct-note">Instant project consultation & quick answers to your technical questions.</p>
+                <a href="https://wa.me/918084444842?text=Hi%20EaseWorks%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn btn-direct-action">
+                  <span>💬 Chat on WhatsApp</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              <!-- Email Card -->
+              <div class="direct-card email-card">
+                <div class="direct-card-glow"></div>
+                <div class="direct-card-header">
+                  <div class="direct-icon-wrap email-icon-bg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="direct-label">Direct Email</span>
+                    <div class="direct-value">k4390249@gmail.com</div>
+                  </div>
+                </div>
+                <p class="direct-note">Send us your detailed RFPs, project specifications, or collaboration inquiries.</p>
+                <a href="mailto:k4390249@gmail.com" class="btn btn-direct-action">
+                  <span>📧 Email Us</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Contact Form -->
+          <div class="contact-form-col reveal-item">
+            <div class="contact-form-card">
+              <h3 class="form-title">Send Us a Project Message</h3>
+              <p class="form-desc">Fill out the quick form below and we will get back to you promptly with a development plan.</p>
+
+              <form id="contactForm" class="contact-form" novalidate>
+                <!-- Name -->
+                <div class="form-group">
+                  <label for="userName" class="form-label">Your Name <span class="req">*</span></label>
+                  <input type="text" id="userName" name="name" class="form-control" placeholder="e.g. Alex Johnson" required>
+                  <span class="error-msg" id="nameError">Please enter your name</span>
+                </div>
+
+                <!-- Email & Phone Grid -->
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="userEmail" class="form-label">Email Address <span class="req">*</span></label>
+                    <input type="email" id="userEmail" name="email" class="form-control" placeholder="alex@company.com" required>
+                    <span class="error-msg" id="emailError">Please enter a valid email address</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="userWhatsApp" class="form-label">WhatsApp Number <span class="req">*</span></label>
+                    <input type="tel" id="userWhatsApp" name="whatsapp" class="form-control" placeholder="+91 98765 43210" required>
+                    <span class="error-msg" id="whatsappError">Please enter your phone/WhatsApp number</span>
+                  </div>
+                </div>
+
+                <!-- Project Type Dropdown -->
+                <div class="form-group">
+                  <label for="projectType" class="form-label">Project Type <span class="req">*</span></label>
+                  <div class="select-wrapper">
+                    <select id="projectType" name="projectType" class="form-control select-control" required>
+                      <option value="" disabled selected>Select the service you need</option>
+                      <option value="Website Development">Website Development</option>
+                      <option value="Mobile App Development">Mobile App Development</option>
+                      <option value="Full-Stack Development">Full-Stack Development</option>
+                      <option value="UI/UX Design">UI/UX Design</option>
+                      <option value="Backend Development">Backend Development</option>
+                      <option value="AI Integration">AI Integration</option>
+                      <option value="Business & E-commerce Website">Business & E-commerce Website</option>
+                    </select>
+                  </div>
+                  <span class="error-msg" id="projectTypeError">Please select a project category</span>
+                </div>
+
+                <!-- Project Details -->
+                <div class="form-group">
+                  <label for="projectDetails" class="form-label">Project Details <span class="req">*</span></label>
+                  <textarea id="projectDetails" name="details" rows="4" class="form-control textarea-control" placeholder="Briefly describe what you want to build, key features, target timeline, or reference links..." required></textarea>
+                  <span class="error-msg" id="detailsError">Please describe your project briefly</span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block submit-btn" id="submitBtn">
+                  <span class="btn-text">Send Enquiry</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top-grid">
+        <!-- Brand Info -->
+        <div class="footer-col footer-col-brand">
+          <a href="#hero" class="brand-logo footer-logo" aria-label="EaseWorks Home">
+            <span class="logo-symbol">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+            <span class="logo-text">Ease<span class="logo-accent">Works</span></span>
+          </a>
+          <p class="footer-tagline">
+            Professional digital solutions without the high agency cost.
+          </p>
+          <p class="footer-subtext">
+            A flexible team of passionate engineers building modern software for businesses and creators.
+          </p>
+          <!-- Social Links Placeholders -->
+          <div class="social-links-row">
+            <a href="#" class="social-link" aria-label="EaseWorks Instagram (Placeholder)" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="EaseWorks LinkedIn (Placeholder)" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="EaseWorks GitHub (Placeholder)" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services Links -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Website Development</a></li>
+            <li><a href="#services">Mobile App Development</a></li>
+            <li><a href="#services">Full-Stack Development</a></li>
+            <li><a href="#services">UI/UX Design</a></li>
+            <li><a href="#services">Backend Development</a></li>
+            <li><a href="#services">AI Integration</a></li>
+            <li><a href="#services">Business & E-commerce Websites</a></li>
+          </ul>
+        </div>
+
+        <!-- Direct Contact Col -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Contact</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <a href="mailto:k4390249@gmail.com" class="footer-contact-item">
+                <span class="icon">📧</span>
+                <span>k4390249@gmail.com</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+918084444842" class="footer-contact-item">
+                <span class="icon">📱</span>
+                <span>+91 80844 44842</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/918084444842?text=Hi%20EaseWorks%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="footer-contact-item highlight-contact">
+                <span class="icon">💬</span>
+                <span>WhatsApp: Chat with us →</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="copyright-text">© 2026 EaseWorks. All rights reserved.</p>
+        <p class="footer-credit">Built with care by engineers & developers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Javascript -->
+  <script src="script.js"></script>
+</body>
+</html>
