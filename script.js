@@ -1,6 +1,6 @@
 /**
- * EaseWorks — Modern Software Development Agency
- * Interactions, Micro-animations, Hero Parallax, Custom Cursor & Form Logic
+ * EaseWorks — Modern Software Development & Engineering Agency
+ * Interactions, Hero Parallax, Responsive Navigation, Service Sync & Form Logic
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('siteHeader');
   const mobileToggle = document.getElementById('mobileToggle');
   const mobileDrawer = document.getElementById('mobileDrawer');
+  const drawerClose = document.getElementById('drawerClose');
+  const drawerBackdrop = document.getElementById('drawerBackdrop');
   const customCursor = document.getElementById('customCursor');
   const cursorTrailer = document.getElementById('cursorTrailer');
   const heroVisual = document.getElementById('heroVisual');
@@ -20,22 +22,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastContainer = document.getElementById('toastContainer');
   const navLinks = document.querySelectorAll('.nav-link');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-  const serviceCards = document.querySelectorAll('.service-card');
+  const serviceCards = document.querySelectorAll('.service-bento-card');
   const projectTypeSelect = document.getElementById('projectType');
+  const serviceSelectGroup = document.getElementById('serviceSelectGroup');
 
   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.innerWidth < 992;
 
   // ==========================================================================
-  // 2. CUSTOM CURSOR (Desktop only with Lerp Smoothing)
+  // 2. CUSTOM CURSOR (Desktop Non-Touch Only with Smooth Lerp)
   // ==========================================================================
   if (!isTouchDevice && customCursor && cursorTrailer) {
+    customCursor.style.display = 'block';
+    cursorTrailer.style.display = 'block';
+
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let trailerX = mouseX;
     let trailerY = mouseY;
     let isCursorVisible = false;
 
-    // Direct position update for main dot
     window.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -49,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
       customCursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
     });
 
-    // Smooth linear interpolation for cursor trailer ring
     function renderCursorTrailer() {
       trailerX += (mouseX - trailerX) * 0.18;
       trailerY += (mouseY - trailerY) * 0.18;
@@ -59,33 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     requestAnimationFrame(renderCursorTrailer);
 
-    // Hide cursor when leaving window
     document.addEventListener('mouseleave', () => {
       customCursor.style.opacity = '0';
       cursorTrailer.style.opacity = '0';
       isCursorVisible = false;
     });
 
-    // Interactive hover triggers
-    // A) Buttons
-    const buttons = document.querySelectorAll('button, .btn, .social-link, .mobile-toggle');
-    buttons.forEach((el) => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover-button'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover-button'));
-    });
-
-    // B) Links
-    const links = document.querySelectorAll('a:not(.btn)');
-    links.forEach((el) => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover-link'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover-link'));
-    });
-
-    // C) Service & Interactive Cards
-    const interactiveCards = document.querySelectorAll('.service-card, .direct-card, .why-card, .team-card');
-    interactiveCards.forEach((el) => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover-card'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover-card'));
+    // Interactive Hover States
+    const interactiveElements = document.querySelectorAll('button, a, .service-bento-card, .archetype-card, .why-card, .team-card, .channel-card, input, select, textarea');
+    interactiveElements.forEach((el) => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
   }
 
@@ -93,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. STICKY NAVBAR & SCROLL BEHAVIOR
   // ==========================================================================
   function handleNavbarScroll() {
-    if (window.scrollY > 20) {
+    if (window.scrollY > 24) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -103,14 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', handleNavbarScroll, { passive: true });
   handleNavbarScroll();
 
-  // Active section tracker on scroll
-  const sections = document.querySelectorAll('section[id]');
+  // Scrollspy: Highlight Active Nav Link
+  const trackedSections = document.querySelectorAll('section[id]');
   function updateActiveNavOnScroll() {
     const scrollY = window.scrollY;
-    sections.forEach((current) => {
-      const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
-      const sectionId = current.getAttribute('id');
+    trackedSections.forEach((section) => {
+      const sectionHeight = section.offsetHeight;
+      const sectionTop = section.offsetTop - 140;
+      const sectionId = section.getAttribute('id');
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
         navLinks.forEach((link) => {
@@ -125,18 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateActiveNavOnScroll, { passive: true });
 
   // ==========================================================================
-  // 4. MOBILE HAMBURGER MENU
+  // 4. MOBILE DRAWER NAVIGATION
   // ==========================================================================
   if (mobileToggle && mobileDrawer) {
-    function toggleMobileMenu() {
-      const isOpen = mobileDrawer.classList.contains('open');
-      if (isOpen) {
-        closeMobileMenu();
-      } else {
-        openMobileMenu();
-      }
-    }
-
     function openMobileMenu() {
       mobileDrawer.classList.add('open');
       mobileDrawer.setAttribute('aria-hidden', 'false');
@@ -151,9 +130,15 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     }
 
-    mobileToggle.addEventListener('click', toggleMobileMenu);
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobileDrawer.classList.contains('open');
+      if (isOpen) closeMobileMenu();
+      else openMobileMenu();
+    });
 
-    // Auto-close menu when a mobile nav link is clicked
+    if (drawerClose) drawerClose.addEventListener('click', closeMobileMenu);
+    if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMobileMenu);
+
     mobileNavLinks.forEach((link) => {
       link.addEventListener('click', closeMobileMenu);
     });
@@ -163,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileDrawerBtn.addEventListener('click', closeMobileMenu);
     }
 
-    // Close on Escape key
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
         closeMobileMenu();
@@ -172,61 +156,80 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 5. HERO VISUAL PARALLAX INTERACTION (Smooth subtle tilt & shift)
+  // 5. HERO VISUAL 3D PARALLAX TILT
   // ==========================================================================
   if (heroVisual && parallaxCanvas && !isTouchDevice) {
-    const parallaxElements = heroVisual.querySelectorAll('[data-parallax-depth]');
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let isHoveringHero = false;
-
     const heroSection = document.getElementById('hero');
+    const satellites = heroVisual.querySelectorAll('[data-parallax-depth]');
+    const consoleWindow = heroVisual.querySelector('.console-window');
+
+    let targetRotX = 0;
+    let targetRotY = 0;
+    let currentRotX = 0;
+    let currentRotY = 0;
+
+    let targetShiftX = 0;
+    let targetShiftY = 0;
+    let currentShiftX = 0;
+    let currentShiftY = 0;
 
     heroSection.addEventListener('mousemove', (e) => {
       const rect = heroSection.getBoundingClientRect();
-      const mouseRelX = e.clientX - rect.left;
-      const mouseRelY = e.clientY - rect.top;
+      const relX = (e.clientX - rect.left) / rect.width - 0.5;
+      const relY = (e.clientY - rect.top) / rect.height - 0.5;
 
-      // Range -1 to 1 from center
-      targetX = ((mouseRelX / rect.width) - 0.5) * 2;
-      targetY = ((mouseRelY / rect.height) - 0.5) * 2;
-      isHoveringHero = true;
+      targetRotX = -relY * 12; // tilt up/down
+      targetRotY = relX * 14;  // tilt left/right
+      targetShiftX = relX * 2;
+      targetShiftY = relY * 2;
     });
 
     heroSection.addEventListener('mouseleave', () => {
-      targetX = 0;
-      targetY = 0;
-      isHoveringHero = false;
+      targetRotX = 0;
+      targetRotY = 0;
+      targetShiftX = 0;
+      targetShiftY = 0;
     });
 
-    function updateParallax() {
-      // Smooth interpolation for subtle feel
-      currentX += (targetX - currentX) * 0.08;
-      currentY += (targetY - currentY) * 0.08;
+    function updateHeroParallax() {
+      currentRotX += (targetRotX - currentRotX) * 0.08;
+      currentRotY += (targetRotY - currentRotY) * 0.08;
+      currentShiftX += (targetShiftX - currentShiftX) * 0.08;
+      currentShiftY += (targetShiftY - currentShiftY) * 0.08;
 
-      parallaxElements.forEach((el) => {
-        const depth = parseFloat(el.getAttribute('data-parallax-depth')) || 20;
-        const moveX = currentX * depth;
-        const moveY = currentY * depth;
-        el.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+      if (consoleWindow) {
+        consoleWindow.style.transform = `rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
+      }
+
+      satellites.forEach((sat) => {
+        const depth = parseFloat(sat.getAttribute('data-parallax-depth')) || 20;
+        const moveX = currentShiftX * depth;
+        const moveY = currentShiftY * depth;
+        sat.style.transform = `translate3d(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px, 0)`;
       });
 
-      requestAnimationFrame(updateParallax);
+      requestAnimationFrame(updateHeroParallax);
     }
-    requestAnimationFrame(updateParallax);
+    requestAnimationFrame(updateHeroParallax);
   }
 
   // ==========================================================================
-  // 6. SERVICE CARDS: SELECTION SHORTCUT TO CONTACT FORM
+  // 6. SERVICE BENTO CARDS -> FORM SYNC & SMOOTH SCROLL
   // ==========================================================================
   serviceCards.forEach((card) => {
+    // Mouse spotlight effect on card
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    // Click to select in contact dropdown
     card.addEventListener('click', () => {
-      const title = card.querySelector('.service-title');
-      if (title && projectTypeSelect) {
-        const serviceName = title.textContent.trim();
-        // Match option in dropdown
+      const serviceName = card.getAttribute('data-service');
+      if (serviceName && projectTypeSelect) {
         for (let i = 0; i < projectTypeSelect.options.length; i++) {
           if (projectTypeSelect.options[i].value.toLowerCase() === serviceName.toLowerCase()) {
             projectTypeSelect.selectedIndex = i;
@@ -235,26 +238,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      // Smooth scroll to contact section
       const contactSection = document.getElementById('contact');
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
-        // Briefly highlight the dropdown
         setTimeout(() => {
-          projectTypeSelect.focus();
-          projectTypeSelect.parentElement.classList.add('highlight-glow');
-          setTimeout(() => {
-            projectTypeSelect.parentElement.classList.remove('highlight-glow');
-          }, 1200);
+          if (projectTypeSelect) projectTypeSelect.focus();
+          if (serviceSelectGroup) {
+            serviceSelectGroup.classList.add('highlight-pulse');
+            setTimeout(() => {
+              serviceSelectGroup.classList.remove('highlight-pulse');
+            }, 1200);
+          }
         }, 600);
       }
     });
   });
 
   // ==========================================================================
-  // 7. SCROLL-REVEAL ANIMATIONS (IntersectionObserver)
+  // 7. SCROLL-REVEAL OBSERVER
   // ==========================================================================
-  const revealElements = document.querySelectorAll('.reveal-item');
+  const revealItems = document.querySelectorAll('.reveal-item');
   if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
@@ -265,24 +268,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, {
       root: null,
-      threshold: 0.12,
+      threshold: 0.1,
       rootMargin: '0px 0px -40px 0px'
     });
 
-    revealElements.forEach((el, index) => {
-      // Add slight staggered transition delay if in a grid
-      const parentGrid = el.closest('.services-grid, .why-grid, .team-grid, .process-timeline');
-      if (parentGrid) {
-        const siblingIndex = Array.from(parentGrid.children).indexOf(el);
-        if (siblingIndex >= 0) {
-          el.style.transitionDelay = `${(siblingIndex % 4) * 0.08}s`;
-        }
-      }
+    revealItems.forEach((el) => {
       revealObserver.observe(el);
     });
   } else {
-    // Fallback: show immediately
-    revealElements.forEach(el => el.classList.add('in-view'));
+    revealItems.forEach(el => el.classList.add('in-view'));
   }
 
   // ==========================================================================
@@ -309,42 +303,42 @@ document.addEventListener('DOMContentLoaded', () => {
       clearErrors();
       let isValid = true;
 
-      // Validate Name
+      // 1. Name Validation
       if (!nameInput.value.trim()) {
-        nameInput.closest('.form-group').classList.add('has-error');
+        nameInput.closest('.input-field-group').classList.add('has-error');
         isValid = false;
       }
 
-      // Validate Email
+      // 2. Email Validation
       if (!validateEmail(emailInput.value.trim())) {
-        emailInput.closest('.form-group').classList.add('has-error');
+        emailInput.closest('.input-field-group').classList.add('has-error');
         isValid = false;
       }
 
-      // Validate WhatsApp Number
+      // 3. WhatsApp / Phone Validation
       if (!whatsappInput.value.trim() || whatsappInput.value.trim().length < 7) {
-        whatsappInput.closest('.form-group').classList.add('has-error');
+        whatsappInput.closest('.input-field-group').classList.add('has-error');
         isValid = false;
       }
 
-      // Validate Project Type
+      // 4. Project Category Validation
       if (!projectTypeSelect.value) {
-        projectTypeSelect.closest('.form-group').classList.add('has-error');
+        projectTypeSelect.closest('.input-field-group').classList.add('has-error');
         isValid = false;
       }
 
-      // Validate Details
+      // 5. Details Validation
       if (!detailsInput.value.trim()) {
-        detailsInput.closest('.form-group').classList.add('has-error');
+        detailsInput.closest('.input-field-group').classList.add('has-error');
         isValid = false;
       }
 
       if (!isValid) {
-        showToast('Please fill out all required fields correctly.', 'warning');
+        showToast('Please complete all required fields.', 'warning');
         return;
       }
 
-      // Format WhatsApp pre-filled message
+      // Construct WhatsApp Deep Link Message
       const clientName = nameInput.value.trim();
       const clientEmail = emailInput.value.trim();
       const clientPhone = whatsappInput.value.trim();
@@ -352,35 +346,38 @@ document.addEventListener('DOMContentLoaded', () => {
       const clientDetails = detailsInput.value.trim();
 
       const formattedMessage = `Hi EaseWorks, I would like to discuss a project:%0A%0A` +
-        `• *Name:* ${encodeURIComponent(clientName)}%0A` +
+        `• *Client Name:* ${encodeURIComponent(clientName)}%0A` +
         `• *Email:* ${encodeURIComponent(clientEmail)}%0A` +
-        `• *WhatsApp:* ${encodeURIComponent(clientPhone)}%0A` +
-        `• *Service:* ${encodeURIComponent(clientService)}%0A` +
-        `• *Project Details:* ${encodeURIComponent(clientDetails)}`;
+        `• *WhatsApp/Phone:* ${encodeURIComponent(clientPhone)}%0A` +
+        `• *Service Required:* ${encodeURIComponent(clientService)}%0A` +
+        `• *Project Scope:* ${encodeURIComponent(clientDetails)}`;
 
       const whatsappUrl = `https://wa.me/918084444842?text=${formattedMessage}`;
 
-      // Provide responsive UI feedback
+      // Button Feedback State
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>Preparing Consultation...</span>`;
+      submitBtn.innerHTML = `<span>Preparing Project Brief...</span>`;
 
-      showToast('Enquiry details recorded! Opening WhatsApp to start our conversation...', 'success');
+      showToast('Project inquiry recorded! Opening WhatsApp to start direct communication...', 'success');
 
       setTimeout(() => {
-        // Open WhatsApp directly in new window
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-        
-        // Reset form & button
         contactForm.reset();
         submitBtn.disabled = false;
-        submitBtn.innerHTML = `<span class="btn-text">Send Enquiry</span><span class="btn-arrow" aria-hidden="true">→</span>`;
-      }, 1000);
+        submitBtn.innerHTML = `
+          <span class="btn-text">Send Project Inquiry</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        `;
+      }, 900);
     });
 
-    // Real-time error clearance on input
+    // Real-time clearance of error states
     [nameInput, emailInput, whatsappInput, detailsInput, projectTypeSelect].forEach((input) => {
       input.addEventListener('input', () => {
-        const group = input.closest('.form-group');
+        const group = input.closest('.input-field-group');
         if (group && group.classList.contains('has-error')) {
           group.classList.remove('has-error');
         }
@@ -389,20 +386,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 9. TOAST NOTIFICATION UTILITY
+  // 9. TOAST NOTIFICATION UTILITY (Zero Emoji, Clean Vector Icons)
   // ==========================================================================
   function showToast(message, type = 'info') {
     if (!toastContainer) return;
 
     const toast = document.createElement('div');
     toast.className = 'toast';
-    
-    let icon = 'ℹ️';
-    if (type === 'success') icon = '✅';
-    if (type === 'warning') icon = '⚠️';
+
+    let iconSvg = '';
+    if (type === 'success') {
+      iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+    } else if (type === 'warning') {
+      iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>`;
+    } else {
+      iconSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
+    }
 
     toast.innerHTML = `
-      <span class="toast-icon">${icon}</span>
+      <span class="toast-icon">${iconSvg}</span>
       <span class="toast-message">${message}</span>
     `;
 
@@ -413,6 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         toast.remove();
       }, 300);
-    }, 4000);
+    }, 4200);
   }
 });
